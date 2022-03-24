@@ -6,7 +6,7 @@
 /*   By: msoler-e <msoler-e@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:32:57 by msoler-e          #+#    #+#             */
-/*   Updated: 2022/03/24 11:17:14 by msoler-e         ###   ########.fr       */
+/*   Updated: 2022/03/24 12:39:32 by msoler-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -14,7 +14,7 @@
 void	rebut(int sig)
 {
 	(void)sig;
-	write(1, "Rebuda senyal\n", 26);
+	write(1, "Rebuda senyal\n", 14);
 }
 
 void	ft_send(int pid, char letter)
@@ -27,14 +27,18 @@ void	ft_send(int pid, char letter)
 		if (((letter >> i) & 1) == 1)
 		{
 			if (kill(pid, SIGUSR1) == -1)
+			{
 				ft_error("iError_send_SIGUSR1", 1);
+			}
 		}
 		if (((letter >> i) & 1) == 0)
 		{
 			if (kill(pid, SIGUSR2) == -1)
+			{
 				ft_error("oError_send_SIGUSR2", 1);
+			}
 		}
-		usleep(600);
+		usleep(500);
 		i ++;
 	}
 }

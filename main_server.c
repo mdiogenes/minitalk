@@ -6,7 +6,7 @@
 /*   By: msoler-e <msoler-e@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 10:32:35 by msoler-e          #+#    #+#             */
-/*   Updated: 2022/03/24 11:13:51 by msoler-e         ###   ########.fr       */
+/*   Updated: 2022/03/24 12:40:34 by msoler-e         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "minitalk.h"
@@ -15,7 +15,8 @@ void	ft_receipt(int sig, int pid)
 {
 	static int	cont = 0;
 	static char	letter = 0;
-	(void)pid;	
+
+	(void)pid;
 	if (sig == SIGUSR1)
 		letter = letter | 1 << cont;
 	cont ++ ;
